@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked Love</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        .terminal {
+            display: inline-block;
+            text-align: left;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            white-space: pre-wrap;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        .blink {
+            animation: blink 1s steps(2, start) infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .ascii-art {
+            font-size: 12px;
+            line-height: 1.2;
+            white-space: pre;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0px #ff0000, -2px -2px 0px #0000ff; }
+            25% { text-shadow: -2px -2px 0px #ff0000, 2px 2px 0px #0000ff; }
+            50% { text-shadow: 2px -2px 0px #ff0000, -2px 2px 0px #0000ff; }
+            75% { text-shadow: -2px 2px 0px #ff0000, 2px -2px 0px #0000ff; }
+            100% { text-shadow: 2px 2px 0px #ff0000, -2px -2px 0px #0000ff; }
+        }
+        #loveButton {
+            display: none;
+            background: #00ff00;
+            color: black;
+            font-family: monospace;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #loveButton:hover {
+            background: #00cc00;
+        }
+        #loveLetter {
+            display: none;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #00ff00;
+        }
+        #loveLetter button {
+            background: #00ff00;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #loveLetter button:hover {
+            background: #00cc00;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal" id="output">
+        <div class="ascii-art">
+            ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤<br>
+            ❤    HACKED BY LOVE.EXE    ❤<br>
+            ❤    INITIATING LOVE...    ❤<br>
+            ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤
+        </div>
+        <br>Initializing...
+    </div>
+    
+    <div id="passwordPrompt">
+        <p>Enter Password to Decrypt:</p>
+        <input type="password" id="passwordInput">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+    
+    <button id="loveButton" style="display:none;" onclick="showLoveLetter()">💌 Decrypt Secret Message</button>
+    
+    <div id="loveLetter">
+        <h2>My Love Note to My Soulmate</h2>
+        <p>Dear Noel,</p>
+        <p>I will forever try my best to be your safe space. You are the best thing that happened to me, I'm sorry for not always being able to show you correctly, genuinely. I sound like a broken record, but truly it's because my love for you scares me. I never thought someone could impact me as much as you have. You teach me something about true love, forgiveness and honesty daily. Thank you for your patience, I know I can be a b word sometimes, I'm still adjusting to a hottie like you. I don't want to go through life with anyone but you. Stay by my side, my love. I will always be on yours xx  </p>
+        <p>Happy Valentine's Day! Forever yours, Bianca xx</p>
+        <button onclick="closeLoveLetter()">Close</button>
+    </div>
+    
+    <script>
+        const messages = [
+            "Initializing Love.exe...",
+            "Bypassing Firewalls...",
+            "Injecting Affection Script...",
+            "Decrypting Feelings...",
+            "Sending Apology Patch...",
+            "Uploading Infinite Hugs...",
+            "Message Received: 'I Love You To The Moon and Back'",
+        ];
+
+        let index = 0;
+        function typeMessage() {
+            if (index < messages.length) {
+                document.getElementById("output").innerText += "\n" + messages[index];
+                playBeep();
+                index++;
+                setTimeout(typeMessage, 1500);
+            } else {
+                document.getElementById("output").innerHTML += "\n<span class='blink'>_</span>";
+            }
+        }
+        
+        function checkPassword() {
+            const password = document.getElementById("passwordInput").value;
+            if (password === "buncalovesyou") {
+                document.getElementById("passwordPrompt").style.display = "none";
+                document.getElementById("loveButton").style.display = "block";
+            } else {
+                alert("Incorrect Password! Try again, Loser.");
+            }
+        }
+        
+        function showLoveLetter() {
+            document.getElementById("loveLetter").style.display = "block";
+        }
+
+        function closeLoveLetter() {
+            document.getElementById("loveLetter").style.display = "none";
+        }
+        
+        function playBeep() {
+            const beep = new Audio("https://www.soundjay.com/button/beep-07.wav");
+            beep.play();
+        }
+        
+        setTimeout(typeMessage, 1000);
+    </script>
+</body>
+</html>
